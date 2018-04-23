@@ -1,0 +1,36 @@
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+        - resources:
+            requests:
+              cpu: '200m'
+              memory: '400Mi'
+            limits:
+              cpu: '400m'
+              memory: '800Mi'
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /health
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /health
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 180
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          ports:
+            - containerPort: 8080
+              name: http
+              protocol: TCP

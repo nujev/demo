@@ -9,6 +9,8 @@ spring:
   application:
     name: demo
 eureka:
+  instance:
+    prefer-ip-address: true
   client:
     serviceUrl:
       defaultZone: http://${EUREKA-SERVER:localhost}:${SERVER-PORT:8084}/eureka/

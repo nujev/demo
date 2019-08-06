@@ -9,8 +9,6 @@ spring:
   application:
     name: demo
 eureka:
-  instance:
-    instance-id: ${spring.application.name}
   client:
     serviceUrl:
       defaultZone: http://${EUREKA-SERVER:localhost}:${SERVER-PORT:8084}/eureka/
